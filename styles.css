@@ -202,8 +202,21 @@ section {
 
 .logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   color: var(--ink);
+}
+
+.logo .logo-emblem {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo .logo-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .logo .logo-main {
@@ -309,31 +322,27 @@ section {
   flex-wrap: wrap;
 }
 
-/* ============ Numbered Feature Row ============ */
-.feature-row {
+/* ============ Pillar Cards ============ */
+.pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 28px;
 }
 
-.feature-item {
-  position: relative;
-  padding-top: 8px;
+.pillar-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.feature-item .feature-number {
-  position: absolute;
-  top: -34px;
-  right: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4.2rem;
-  font-weight: 800;
-  color: var(--light-gray);
-  z-index: 0;
-  line-height: 1;
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(28, 26, 21, 0.08);
 }
 
-.feature-item .feature-icon {
+.pillar-icon {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -343,24 +352,17 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  font-weight: 800;
   margin-bottom: 22px;
-  position: relative;
-  z-index: 1;
 }
 
-.feature-item h3 {
+.pillar-card h3 {
   font-size: 1.15rem;
   margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
 }
 
-.feature-item p {
+.pillar-card p {
   color: var(--text-body);
   font-size: 0.95rem;
-  position: relative;
-  z-index: 1;
 }
 
 /* ============ Practice Grid ============ */
@@ -612,91 +614,6 @@ section {
   font-size: 0.9rem;
 }
 
-/* ============ Testimonials ============ */
-.testimonials {
-  background: var(--gold-deep);
-  color: #fff;
-}
-
-.testimonials .eyebrow {
-  color: var(--gold);
-}
-
-.testimonials .section-heading {
-  color: #fff;
-}
-
-.testimonial-track {
-  position: relative;
-  min-height: 220px;
-}
-
-.testimonial-slide {
-  display: none;
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.testimonial-slide.active {
-  display: block;
-}
-
-.testimonial-slide .quote {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--text-muted-dark);
-  margin-bottom: 28px;
-}
-
-.testimonial-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--gold);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  margin: 0 auto 14px;
-  font-size: 1.1rem;
-}
-
-.testimonial-slide h4 {
-  color: #fff;
-  font-size: 1rem;
-  margin-bottom: 2px;
-}
-
-.testimonial-slide span {
-  color: var(--gold);
-  font-size: 0.85rem;
-}
-
-.testimonial-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 36px;
-}
-
-.testimonial-dots button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  padding: 0;
-  transition: background var(--transition);
-}
-
-.testimonial-dots button.active {
-  background: var(--gold);
-}
-
 /* ============ Practice Areas Page ============ */
 .practice-detail {
   border-bottom: 1px solid var(--border-light);
@@ -903,6 +820,13 @@ section {
   letter-spacing: 1px;
 }
 
+.footer-emblem {
+  height: 76px;
+  width: 76px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
 .footer-grid .logo-main {
   color: #fff;
 }
@@ -970,12 +894,8 @@ section {
   .about-split,
   .contact-grid,
   .values-list,
-  .feature-row {
+  .pillars-grid {
     grid-template-columns: 1fr;
-  }
-
-  .feature-item .feature-number {
-    top: -22px;
   }
 
   .practice-detail {
