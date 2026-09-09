@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Connect With Us form handling (placeholder — wire up to a backend or Formspree later)
+  // Connect With Us form handling — submits to Formspree via AJAX
   var form = document.querySelector('.contact-form form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = document.querySelector('.form-status');
+      var submitBtn = form.querySelector('button[type="submit"]');
       var name = form.querySelector('#name').value.trim();
       var email = form.querySelector('#email').value.trim();
       var message = form.querySelector('#message').value.trim();
@@ -26,10 +27,32 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // TODO: replace with real submission endpoint
-      status.textContent = 'Thank you — your message has been received. We will be in touch shortly.';
-      status.className = 'form-status success';
-      form.reset();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            status.textContent = 'Thank you — your message has been received. We will be in touch shortly.';
+            status.className = 'form-status success';
+            form.reset();
+          } else {
+            status.textContent = 'Something went wrong. Please try again or email us directly.';
+            status.className = 'form-status error';
+          }
+        })
+        .catch(function () {
+          status.textContent = 'Something went wrong. Please try again or email us directly.';
+          status.className = 'form-status error';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
     });
   }
 
