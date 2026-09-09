@@ -299,6 +299,28 @@ section {
   z-index: 1;
 }
 
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 420px;
+  width: auto;
+  max-width: none;
+  filter: brightness(0) invert(1);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media (max-width: 760px) {
+  .hero-watermark {
+    height: 280px;
+    opacity: 0.05;
+  }
+}
+
 .hero .eyebrow {
   color: var(--gold);
 }
@@ -778,10 +800,66 @@ section {
 
 /* ============ CTA Banner ============ */
 .cta-banner {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(115deg, var(--gold-deep), var(--gold));
   color: #fff;
   padding: 68px 0;
   text-align: center;
+}
+
+.cta-banner .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 190px;
+  width: auto;
+  max-width: none;
+  filter: brightness(0) invert(1);
+  opacity: 0.09;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.content-watermark-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-watermark-host > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.content-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 320px;
+  width: auto;
+  max-width: none;
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media (max-width: 760px) {
+  .cta-watermark {
+    height: 140px;
+  }
+
+  .content-watermark {
+    height: 220px;
+  }
 }
 
 .cta-banner h2 {
@@ -867,9 +945,37 @@ section {
 
 /* ============ Page Header (inner pages) ============ */
 .page-header {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(115deg, var(--ink), var(--gold-deep));
   color: #fff;
   padding: 70px 0;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 220px;
+  width: auto;
+  max-width: none;
+  filter: brightness(0) invert(1);
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media (max-width: 760px) {
+  .page-header-watermark {
+    height: 160px;
+  }
 }
 
 .page-header h1 {
